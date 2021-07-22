@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom'
+
+import Colab from './components/colab/colab.js';
+import Lobby from './components/lobby/lobby.js';
+import CreateNew from './components/createnew/createnew.js';
+import Header from './components/header/header.js';
+import Footer from './components/footer/footer.js';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+   
+  <Router> 
+    <Header />
+    <Route path="/" exact component={Lobby} />
+    <Route path="/colab" exact component={Colab} />
+    <Route path="/create" exact component={CreateNew} />
+    <Footer />
+  </Router>
+
+  )
 }
 
 export default App;
