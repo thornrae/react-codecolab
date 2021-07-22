@@ -8,7 +8,7 @@ const Header = () => {
 
 return (
   <Router>
-    <h1>Header</h1>
+    <h1>Code CoLab: An Interactive Work Space</h1>
     <Route path="/signin" exact component={SignIn} />
     <Route path="/signup" exact component={SignUp} />
     <Route path="/aboutus" exact component={AboutUs} />
