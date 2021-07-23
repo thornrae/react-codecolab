@@ -15,8 +15,6 @@ return (
   </>
 )
 
-  
-
 }
 
 export default Colab;
