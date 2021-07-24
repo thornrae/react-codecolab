@@ -1,13 +1,13 @@
-import {React, useEffect} from 'react';
-import { Route } from 'react-router-dom'
-
+import { React, useEffect } from 'react';
+import { Route } from 'react-router-dom';
+import './App.css';
 import Colab from './pages/colab/colab.js';
 import Lobby from './pages/lobby/lobby.js';
 import CreateNew from './pages/createnew/createnew.js';
 import Header from './components/header/header.js';
 import Footer from './components/footer/footer.js';
 import AboutUs from './pages/aboutus/aboutus.js';
-import socket from 'socket.io-client'
+import socket from 'socket.io-client';
 
 
 
@@ -21,7 +21,7 @@ function App() {
       colabSocket.disconnect()
     }
   }, [])
-  
+
   return (
     <div>
       <Header />

@@ -1,0 +1,42 @@
+/* ------------- general --------------*/
+.container-fluid {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.shop-container {
+  width: 75%;
+}
+
+.shop-bg-white {
+  background-color: #fff;
+}
+
+.text-success {
+  color: #f17e0a !important;
+}
+
+input.shop-input-error {
+  color: #b93338;
+  background-color: #f2dede;
+  border: 1px solid #eed3d7;
+}
+
+[type="text"]:focus.shop-input-error,
+[type="email"]:focus.shop-input-error {
+  color: #b93338;
+  background-color: #f2dede;
+  border: 1px solid #eed3d7;
+}
+
+input.success {
+  color: #398843;
+  background-color: #dff0d8;
+  border: 1px solid #d6e9c6;
+}
+
+.page-results {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}

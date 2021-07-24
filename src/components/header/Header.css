@@ -1,0 +1,25 @@
+.header-contaner {
+  color: #ffffff;
+  background: #111111;
+  padding: 40px 20px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-items: center;
+}
+
+.header-contaner a {
+  color: #6c757d;
+  text-decoration: none;
+}
+.header-contaner a:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 576px) {
+  /* footer section */
+  .header-contaner {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    justify-items: left;
+  }
+}
