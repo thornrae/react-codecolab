@@ -1,4 +1,4 @@
-import {React, useEffect} from 'react';
+import { React, useEffect, useState } from 'react';
 import { Route } from 'react-router-dom'
 
 import Colab from './pages/colab/colab.js';
@@ -7,6 +7,9 @@ import CreateNew from './pages/createnew/createnew.js';
 import Header from './components/header/header.js';
 import Footer from './components/footer/footer.js';
 import AboutUs from './pages/aboutus/aboutus.js';
+
+import Signup from './components/signup/signup.js'
+
 import socket from 'socket.io-client'
 
 
@@ -14,20 +17,64 @@ import socket from 'socket.io-client'
 
 function App() {
 
+  const [colabSocket, setColabSocket] = useState()
+  const [user, setUser] = useState('')
+  const [openRooms, setOpenRooms] = useState([])
+
+  const userData = (username) => {
+    setUser(username)
+  }
+
+
+
+
   useEffect(() => {
-    const colabSocket = socket.connect("https://codecolab-api.herokuapp.com/")
+    const s = socket.connect("https://codecolab-api.herokuapp.com/")
+
+    setColabSocket(s)
+
+
     return () => {
-      console.log('!!!!!!!!!!!!!!DISCONNECTING!!!!!')
-      colabSocket.disconnect()
+
+      s.disconnect()
+
     }
   }, [])
-  
+
+
+  useEffect(() => {
+    if (colabSocket) {
+
+      colabSocket.on('room-data', payload => {
+        setOpenRooms(payload)
+        console.log(payload)
+      })
+    }
+  }, [colabSocket])
+
+
+  useEffect(() => {
+    if (user) {
+
+      colabSocket.emit('user-signup', user)
+    }
+  }, [user])
+
   return (
     <div>
       <Header />
-      <Route path="/" exact component={Lobby} />
-      <Route path="/colab" exact component={Colab} />
-      <Route path="/create" exact component={CreateNew} />
+      <Signup userSubmit={userData} />
+      <Route path="/" exact render={props =>
+      (<Lobby {...props} rooms={openRooms} data={colabSocket} />
+      )} />
+      { openRooms.map((room) => <Route path={`/colab/${room.room_id}`} exact render={props =>
+        (<Colab {...props} data={colabSocket} />
+        )} />)
+      }
+
+      <Route path="/create" exact render={props =>
+      (<CreateNew {...props} data={colabSocket} user={user} />
+      )} />
       <Route path="/aboutus" exact component={AboutUs} />
       <Footer />
     </div>
