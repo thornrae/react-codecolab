@@ -19,6 +19,7 @@ function App() {
 
   const [colabSocket, setColabSocket] = useState()
   const [user, setUser] = useState('')
+  const [serverUser, setServerUser] = useState()
   const [openRooms, setOpenRooms] = useState([])
 
   const userData = (username) => {
@@ -60,6 +61,20 @@ function App() {
     }
   }, [user])
 
+
+  useEffect(() => {
+    if (user) {
+
+      colabSocket.on('user-return', payload => {
+        setServerUser(payload)
+
+        console.log('NEW USER', payload)
+      })
+
+      
+    }
+  }, [user])
+
   return (
     <div>
       <Header />
@@ -73,7 +88,7 @@ function App() {
       }
 
       <Route path="/create" exact render={props =>
-      (<CreateNew {...props} data={colabSocket} user={user} />
+      (<CreateNew {...props} data={colabSocket} user={serverUser} />
       )} />
       <Route path="/aboutus" exact component={AboutUs} />
       <Footer />
