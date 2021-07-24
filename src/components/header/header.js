@@ -1,9 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+// import { BrowserRouter } from 'react-router-dom';
 import { NavLink } from "react-router-dom";
 import "./Header.css";
-import SignIn from '../signin/signin.js';
-import SignUp from '../signup/signup.js';
+// import SignIn from '../signin/signin.js';
+// import SignUp from '../signup/signup.js';
 
 const Header = () => {
 
