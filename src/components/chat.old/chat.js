@@ -1,25 +1,19 @@
 import React, { useEffect } from 'react';
-
-import io from 'socket.io-client';
-
-let socket;
+import Message from './message/message.js';
+import Messages from './messages/messages.js';
 
 
-const Chat = () => {
-  const ENDPOINT = "localhost:3333";
+const Chat = (props) => {
+  const socket = props.socket;
 
-  useEffect(() => {
-    socket = io(ENDPOINT)
-    console.log('user added front end?')
-
-    console.log(socket);
-    
-  }, )
+  //create
 
 return (
   <>
   <p>Question: Reverse a Linked List</p>
   <h2>CHAT</h2>
+  <Messages />
+  <Message />
   <p>Chat functionality will live here</p>
   <p>Display resources for this question here</p>
 </>
