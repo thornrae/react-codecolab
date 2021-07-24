@@ -1,6 +1,6 @@
-import { React, useEffect, useState } from 'react';
-import { Route } from 'react-router-dom'
-
+import { React, useEffect,useState } from 'react';
+import { Route } from 'react-router-dom';
+import './App.css';
 import Colab from './pages/colab/colab.js';
 import Lobby from './pages/lobby/lobby.js';
 import CreateNew from './pages/createnew/createnew.js';
