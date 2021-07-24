@@ -56,11 +56,12 @@ const CreateNew = (props) => {
     if (selectedQuestion) {
       console.log(selectedQuestion)
 
+     
       let roomInfo = {
         question: selectedQuestion,
         id: selectedQuestion._id
       }
-
+        console.log(props.user)
       let room = `${selectedQuestion._id}${props.user.user_id}`
       socket.emit("question", roomInfo)
       history.push(`/colab/${room}`)
