@@ -51,7 +51,7 @@ function App() {
         console.log(payload)
       })
     }
-  }, [colabSocket])
+  }, [colabSocket, openRooms])
 
 
   useEffect(() => {
@@ -73,8 +73,9 @@ function App() {
 
       
     }
-  }, [user])
+  }, [colabSocket, user])
 
+ 
   return (
 
     <div>

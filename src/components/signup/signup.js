@@ -1,6 +1,6 @@
 // import { React, useState } from 'react';
 import React  from 'react';
-import {useState } from 'react'
+import {useState, useEffect } from 'react'
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -22,14 +22,20 @@ export default function FormDialog(props) {
   //   setOpen(true);
   // };
 
-  const handleClose = () => {
+  const handleSubmit = () => {
     setOpen(false);
     setSignUp(data)
     props.userSubmit(data)
   };
 
+  useEffect(() => {
+    if(!signUp) {
+      setOpen(true)
+    }
+  },[])
 
   const handleChange = (e) => {
+
    data = e.target.value
   }
   function renderSignup() {
@@ -39,7 +45,7 @@ export default function FormDialog(props) {
         Open form dialog
       </Button> */}
 
-        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+        <Dialog open={open} onClose={handleSubmit} aria-labelledby="form-dialog-title">
           <DialogTitle id="form-dialog-title">Create a User Name</DialogTitle>
           <DialogContent>
             <DialogContentText>
@@ -55,10 +61,7 @@ export default function FormDialog(props) {
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose} color="primary">
-              Cancel
-            </Button>
-            <Button onClick={handleClose} color="primary">
+            <Button onClick={handleSubmit} color="primary">
               Submit
             </Button>
           </DialogActions>

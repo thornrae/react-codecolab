@@ -7,9 +7,14 @@ import Input from '../input/input.js';
 import Messages from '../messages/messages.js';
 // import TextContainer from '../textContainer/textContainer.js';
 
-let socket;
 
-const Chat = ({ location }) => {
+
+const Chat = (props) => {
+
+  let socket = props.socket
+
+  
+
   const [name, setName] = useState('');
   const [room, setRoom] = useState('');
   //array that stores all messages
@@ -19,21 +24,21 @@ const Chat = ({ location }) => {
   const [message, setMessage] = useState('');
   //only if these two things change then useEffect will re-render
 
-  // useEffect(() => {
-  //   socket.on('message', (message) => {
-  //     setMessages([...messages, message])
-  //   });
+  useEffect(() => {
+    socket.on('message', (message) => {
+      setMessages([...messages, message])
+    });
 
-  //   socket.on("roomData", ({users}) => {
-  //     setUsers(users)
-  //   })
-  // }, [messages])
+    socket.on("chat-data", ({users}) => {
+      setUsers(users)
+    })
+  }, [messages])
 
   const sendMessage = (event) => {
     event.preventDefault();
     if(message) {
-      console.log(message);
-      // socket.emit('sendMessage', message, () => setMessage(''))
+      console.log('MESSAGE', message);
+      console.log(socket.emit('sendMessage', message, () => setMessage('')))
     }
   }
 
