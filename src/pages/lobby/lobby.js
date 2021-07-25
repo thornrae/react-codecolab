@@ -14,8 +14,6 @@ const Lobby = (props) => {
   const socket = props.data
 
 
-
-
   const link = () => {
     history.push('/create')
   }
@@ -23,18 +21,13 @@ const Lobby = (props) => {
   const roomSelect = (e) => {
     let roomName = e.target.childNodes[0].textContent.split(' || ')
     socket.emit('join-room', roomName[1])
-    console.log(roomName)
-    console.log(e.target.childNodes[0].textContent)
-    console.log(e)
+
 
     history.push(`/colab/${roomName[1]}`)
 
   }
 
-  useEffect(() => {
   
-
-  }, [props.rooms])
 
   return (
     <>
@@ -51,7 +44,7 @@ const Lobby = (props) => {
 
       <div>
 
-        <Button onClick={link}>Create New Lobby</Button>
+        <Button onClick={link}>Create New Room!</Button>
 
 
         {/* <ul>
