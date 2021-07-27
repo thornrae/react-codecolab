@@ -18,7 +18,6 @@ const Chat = (props) => {
   const [name, setName] = useState('');
   const [room, setRoom] = useState('');
   //array that stores all messages
-  const [users, setUsers] = useState('')
   const [messages, setMessages] = useState([]);
   //specificy each message
   const [message, setMessage] = useState('');
@@ -29,15 +28,12 @@ const Chat = (props) => {
       setMessages([...messages, message])
     });
 
-    socket.on("chat-data", ({users}) => {
-      setUsers(users)
-    })
   }, [messages])
 
   const sendMessage = (event) => {
     event.preventDefault();
     if(message) {
-      console.log('MESSAGE', message);
+      console.log('MESSAGE USER', message);
       console.log(socket.emit('sendMessage', message, () => setMessage('')))
     }
   }

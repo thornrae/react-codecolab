@@ -22,11 +22,15 @@ function App() {
   const [user, setUser] = useState('')
   const [serverUser, setServerUser] = useState()
   const [openRooms, setOpenRooms] = useState([])
-
+  const [roomUrl, setRoomUrl] = useState('')
+  
+  const captureUrl = (url) => {
+    console.log('URL FROM LOBBY', url)
+    setRoomUrl(url)
+  }
   const userData = (username) => {
     setUser(username)
   }
-
 
 
   useEffect(() => {
@@ -48,15 +52,14 @@ function App() {
 
       colabSocket.on('room-data', payload => {
         setOpenRooms(payload)
-        console.log(payload)
+        console.log('OPEN ROOMS', payload)
       })
     }
-  }, [colabSocket, openRooms])
+  }, [colabSocket])
 
 
   useEffect(() => {
     if (user) {
-
       colabSocket.emit('user-signup', user)
     }
   }, [user])
@@ -69,6 +72,7 @@ function App() {
         setServerUser(payload)
 
         console.log('NEW USER', payload)
+
       })
 
       
@@ -82,10 +86,10 @@ function App() {
       <Header />
       <Signup userSubmit={userData} />
       <Route path="/" exact render={props =>
-      (<Lobby {...props} rooms={openRooms} data={colabSocket} />
+      (<Lobby {...props} rooms={openRooms} data={colabSocket} url={captureUrl} />
       )} />
       { openRooms.map((room) => <Route path={`/colab/${room.room_id}`} exact render={props =>
-        (<Colab {...props} data={colabSocket} />
+        (<Colab {...props} data={colabSocket} question={openRooms} url={roomUrl}/>
         )} />)
       }
 

@@ -20,6 +20,7 @@ const Lobby = (props) => {
 
   const roomSelect = (e) => {
     let roomName = e.target.childNodes[0].textContent.split(' || ')
+    props.url(roomName[1])
     socket.emit('join-room', roomName[1])
 
 
@@ -27,6 +28,13 @@ const Lobby = (props) => {
 
   }
 
+  // if (questions) {
+  //   questions.forEach((question) => {
+  //     if (question.name === textContent) {
+  //       selection(question)
+  //     }
+  //   })
+  // }
   
 
   return (
@@ -38,7 +46,7 @@ const Lobby = (props) => {
       <List component="nav">
         {props.rooms.map((room) =>
           <ListItem button onClick={roomSelect} value={room.name} key={room.room_id}>
-            <ListItemText primary={`${room.name} || ${room.room_id} || ${room.activeUsers}`} />
+            <ListItemText primary={`${room.question.name} || ${room.room_id} || ${room.activeUsers}`} />
           </ListItem>)}
       </List>
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect, useState } from 'react'
 import Chat from '../../components/chat/chat/chat';
 
 
@@ -8,14 +9,33 @@ import Chat from '../../components/chat/chat/chat';
 const Colab = (props) => {
 
   const socket = props.data;
-  
-return (
-  <>
-  <h1>CoLab Room</h1>
-  <p>this page should display question passed to this component from whatever was selected from Create component (as props) </p>
-  <Chat socket={socket} />
-  </>
-)
+  let questions = props.question
+  let url = props.url
+  const [questionName, setQuestionName] = useState()
+  const [questionDescription, setQuestionDescription] = useState()
+  const [questionResources, setQuestionResources] = useState([])
+
+  useEffect(() => {
+    console.log('COLAB QUESTION ARRAY', questions)
+    console.log('URL', url)
+    questions.forEach(question => {
+      if (question.room_id === url) {
+        console.log('COLAB QUESTION', question)
+        setQuestionName(question.question.name)
+        setQuestionDescription(question.question.description)
+        setQuestionResources(question.question.resources)
+      }
+    })
+  }, [])
+
+
+  return (
+    <>
+      <h1>{questionName}</h1>
+      <p>{questionDescription}</p>
+      <Chat socket={socket} />
+    </>
+  )
 
 }
 
