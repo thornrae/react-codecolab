@@ -12,22 +12,25 @@ import '../colab/colab.css'
 const Colab = (props) => {
 
   const socket = props.data;
-  let questions = props.question
+  let questions = props.question;
   let url = props.url
   console.log('url', url)
   const [questionName, setQuestionName] = useState()
   const [questionDescription, setQuestionDescription] = useState()
   const [questionResources, setQuestionResources] = useState([])
+  const [board, setBoard] = useState()
 
   useEffect(() => {
     console.log('COLAB QUESTION ARRAY', questions)
     console.log('URL', url)
+
     questions.forEach(question => {
       if (question.room_id === url) {
         console.log('COLAB QUESTION', question)
         setQuestionName(question.question.name)
         setQuestionDescription(question.question.description)
         setQuestionResources(question.question.resources)
+        setBoard(question.board)
       }
     })
   }, [])
@@ -39,7 +42,7 @@ const Colab = (props) => {
       <p>{questionDescription}</p>
       <div className="share-features">
       <Chat socket={socket} />
-      <Whiteboard />
+      <Whiteboard board={board}/>
       </div>
     </>
   )
