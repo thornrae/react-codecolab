@@ -21,10 +21,12 @@ const CreateNew = (props) => {
   const [selectedQuestion, setSelectedQuestion] = useState()
   const [room, setRoom] = useState()
 
+  let url = props.url;
   const history = useHistory()
 
   const link = () => {
     console.log('ROOM URL', room)
+    url(room);
     history.push(`/colab/${room}`)
   }
 
