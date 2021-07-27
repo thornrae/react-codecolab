@@ -1,6 +1,9 @@
 import React from 'react';
 import { useEffect, useState } from 'react'
 import Chat from '../../components/chat/chat/chat';
+import Whiteboard from '../../components/whiteboard/whiteboard.js'
+
+import '../colab/colab.css'
 
 
 //import socket.io
@@ -11,6 +14,7 @@ const Colab = (props) => {
   const socket = props.data;
   let questions = props.question
   let url = props.url
+  console.log('url', url)
   const [questionName, setQuestionName] = useState()
   const [questionDescription, setQuestionDescription] = useState()
   const [questionResources, setQuestionResources] = useState([])
@@ -33,7 +37,10 @@ const Colab = (props) => {
     <>
       <h1>{questionName}</h1>
       <p>{questionDescription}</p>
+      <div className="share-features">
       <Chat socket={socket} />
+      <Whiteboard />
+      </div>
     </>
   )
 

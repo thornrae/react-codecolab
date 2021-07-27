@@ -94,7 +94,7 @@ function App() {
       }
 
       <Route path="/create" exact render={props =>
-      (<CreateNew {...props} data={colabSocket} user={serverUser} />
+      (<CreateNew {...props} data={colabSocket} user={serverUser} url={captureUrl} />
       )} />
       <Route path="/aboutus" exact component={AboutUs} />
       <Footer />

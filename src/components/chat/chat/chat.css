@@ -2,8 +2,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 350px;
+  width: 350px;
   background-color: #1A1A1D;
+  margin-right: 20px;
 }
 
 .container {
@@ -12,11 +14,11 @@
   justify-content: space-between;
   background: #FFFFFF;
   border-radius: 8px;
-  height: 60%;
-  width: 35%;
+  height: 100%;
+  width: 100%;
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
+/* @media (min-width: 320px) and (max-width: 480px) {
   .outerContainer {
     height: 100%;
   }
@@ -31,4 +33,4 @@
   .container {
     width: 60%;
   }
-}
+} */
