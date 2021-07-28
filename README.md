@@ -2,13 +2,24 @@
 
 ## Project Version : 0.1
 
-### Author: Clement Buchanan, Taylor Thornton, Kale Lesko, Terrence Jamal Simms
+### Authors:
+
+- [Clement Buchanan](clementbuchanan)
+- [Taylor Thornton](https://github.com/thornrae)
+- [Kale Lesko](https://github.com/saynka)
+- [Terrence Jamal Simms](https://github.com/tjsomega)
 
 ### Links and Resources
 
 - [ci/cd](http://xyz.com) (GitHub Actions)
 - [back-end server url](http://xyz.com) (when applicable)
 - [front-end application](https://dazzling-keller-a456c3.netlify.app/)
+- [401 Final Prep 1](docs/401_Final_Prep_1.md)
+- [401 Final Prep 2](docs/401_Final_Prep_2.md)
+- [401 Final Prep 3](docs/401_Final_Prep_3.md)
+- [401 Final Prep 4](docs/401_Final_Prep_4.md)
+- [Requirements](docs/requirements.md)
+- [User Stories](docs/user_stories.md)
 
 ### Setup
 
@@ -16,8 +27,9 @@
 .
 ├── README.md
 ├── assets
-│   ├── Code_CoLab_Mockup.jpg
-│   └── Code_CoLab_Wireframe.jpg
+│   ├── CodeCoLab Mockup.jpg
+|   |-- CodeColab UML.jpg
+│   └── CodeCoLab Wireframe.jpg
 ├── codecolab
 │   ├── README.md
 │   ├── package-lock.json
@@ -91,10 +103,11 @@
 - Any tests of note?
 - Describe any tests that you did not complete, skipped, etc
 
-#### UML
+#### UML & Wireframe
 
-![UML Example](./reference/uml-1.png)
-{"mode":"full","isActive":false}
+![CodeCoLab UML](assets/CodeCoLab%20UML.jpg)
+![CodeCoLab Wireframe](assets/CodeCoLab%20Wireframe.jpg)
+![CodeCoLab Mockup](assets/CodeCoLab%20Mockup.jpg)
 
 # Getting Started with Create React App
 
