@@ -1,5 +1,5 @@
 import React from 'react';
-// import '../whiteboard/whiteboard.css';
+import '../whiteboard/whiteboard.css';
 
 
 const Whiteboard = (props) => {
@@ -10,7 +10,9 @@ const Whiteboard = (props) => {
   let source = `//www.groupboard.com/gb/${key}`
   console.log('source', source)
   return (
+
   <iframe key={key} title="board" src={source} width="900" height="600" scrolling="no" frameborder="0"></iframe>
+
   )
 
 }
