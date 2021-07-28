@@ -40,3 +40,16 @@ input.success {
   font-weight: 400;
   margin-bottom: 10px;
 }
+
+/* ------------- Footer --------------*/
+
+.main-banner-container {
+  /* To adjust the height as well */
+  height: fit-content;
+}
+
+.Footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

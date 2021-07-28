@@ -1,5 +1,5 @@
 // import {React, useEffect} from 'react';
-import React  from 'react';
+import React from 'react';
 import { useEffect } from 'react'
 
 import Button from '@material-ui/core/Button';
@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom'
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import "./Lobby.css";
 
 const Lobby = (props) => {
   const history = useHistory()
@@ -35,39 +36,40 @@ const Lobby = (props) => {
   //     }
   //   })
   // }
-  
+
 
   return (
     <>
-
-
-      <h3>LOBBY</h3>
-
-      <List component="nav">
-        {props.rooms.map((room) =>
-          <ListItem button onClick={roomSelect} value={room.name} key={room.room_id}>
-            <ListItemText primary={`${room.question.name} || ${room.room_id} || ${room.activeUsers}`} />
-          </ListItem>)}
-      </List>
-
-      <div>
-
-        <Button onClick={link}>Create New Room!</Button>
-
-
-        {/* <ul>
-      <li>SAMPLE: Room || Question: Linked Lists || 2 users present</li>
-      <li>Information above needs to be managed in some kind of state</li>
-      <li>We will need a function that holds reference to all questions currently being worked on</li>
-      <li>Perhaps we determine this by adding an "active" property to our question objects that changes depending on if their are users interacting with that question</li>
-    </ul> */}
-
-      </div>
-    </>
-  )
+      <>
+        <div className="container main-banner-container my-4">
+          <div className="main-banner-content">
+            <div className="main-banner-text">
+              <h4 className="display-4 main-banner-title">{banner.title}</h4>
+              <p className="lead">{banner.text}</p>
+              <p>
+                <List component="nav">
+                  {props.rooms.map((room) =>
+                    <ListItem button onClick={roomSelect} value={room.name} key={room.room_id}>
+                      <ListItemText primary={`${room.question.name} || ${room.room_id} || ${room.activeUsers}`} />
+                    </ListItem>)}
+                </List>
+                {/* <Button className="btn btn-primary btn-lg" onClick={link}>Create New Room!</Button> */}
+                <NavLink className="btn btn-primary btn-lg" onClick={link} to="/create" exact>Create New Room!
+                </NavLink>
+              </p>
+            </div>
+            {/* <img
+            className="main-banner-image"
+            src={img}
+            alt="Logo"
+          /> */}
+          </div>
+        </div>
+      </>
+      )
 
 
 
 }
 
-export default Lobby;
+      export default Lobby;

@@ -41,13 +41,14 @@ const Colab = (props) => {
       <h1>{questionName}</h1>
       <p>{questionDescription}</p>
       <div className="share-features">
-      <Chat socket={socket} />
-      <Whiteboard board={board}/>
+        <Chat socket={socket} />
+        <Whiteboard board={board} />
       </div>
-      
+
     </>
   )
 
 }
+FIXME: // could add css for colors and all that 
 
 export default Colab;
