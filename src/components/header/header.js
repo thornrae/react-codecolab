@@ -8,10 +8,19 @@ import "./Header.css";
 
 const Header = () => {
 
+  let socket = props.socket
+
+  let user = props.user
+
+  const link = () => {
+    console.log('LINK WORKING')
+    socket.emit('leave-room', `${user} Leaving Room`)
+    }
+
   return (
     <div className="header-contaner">
       <div>
-        <h5><NavLink to="/">Home</NavLink></h5>
+        <h5><NavLink to="/" onClick={link}> Home</NavLink></h5>
       </div>
       {/* <div>
         <h5><NavLink to="/Rooms">Rooms</NavLink></h5>

@@ -55,6 +55,7 @@ const Colab = (props) => {
     questions.forEach(question => {
       if (question.room_id === url) {
         console.log('COLAB QUESTION', question)
+        console.log('QUESTION RESOURCES', question.question.resources)
         setQuestionName(question.question.name)
         setQuestionDescription(question.question.description)
         setQuestionResources(question.question.resources)
