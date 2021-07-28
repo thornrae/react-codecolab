@@ -34,8 +34,8 @@ function App() {
 
 
   useEffect(() => {
-    // const s = socket.connect("https://codecolab-api.herokuapp.com/")
-    const s = socket.connect("http://localhost:3333")
+    const s = socket.connect("https://codecolab-api.herokuapp.com/")
+    // const s = socket.connect("http://localhost:3333")
 
     setColabSocket(s)
 

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import Chat from '../../components/chat/chat/chat';
 import Whiteboard from '../../components/whiteboard/whiteboard.js'
 
+
 import '../colab/colab.css'
 
 
@@ -39,7 +40,7 @@ const Colab = (props) => {
   return (
     <>
       <h1>{questionName}</h1>
-      <p>{questionDescription}</p>
+      <p><span className="bold-challenge"> CHALLENGE: </span> {questionDescription}</p>
       <div className="share-features">
       <Chat socket={socket} />
       <Whiteboard board={board}/>

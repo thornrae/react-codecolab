@@ -1,4 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+
 .share-features {
   display: flex;
   justify-content: left;
+  margin-bottom: 10px;
 }
+
+h1 {
+  display: flex;
+  justify-content: center;
+  color: #39ff14;
+  font-family: 'Major Mono Display', monospace;
+  font-size: 50px;
+}
+
+p {
+  display: flex;
+  justify-content: center;
+  color: #39ff14;
+  font-size: 25px;
+}
+
+.bold-challenge {
+  font-weight: 600;
+}
+
