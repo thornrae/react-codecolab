@@ -6,7 +6,7 @@ import "./Header.css";
 // import SignIn from '../signin/signin.js';
 // import SignUp from '../signup/signup.js';
 
-const Header = () => {
+const Header = (props) => {
 
   let socket = props.socket
 

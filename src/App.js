@@ -34,7 +34,8 @@ function App() {
 
 
   useEffect(() => {
-    const s = socket.connect("http://localhost:3333/")
+    // const s = socket.connect("http://localhost:3333/");
+    const s = socket.connect("https://codecolab-api.herokuapp.com/")
 
     setColabSocket(s)
 
@@ -92,7 +93,6 @@ function App() {
         (<Colab {...props} data={colabSocket} question={openRooms} url={roomUrl}/>
         )} />)
       }
-
       <Route path="/create" exact render={props =>
       (<CreateNew {...props} data={colabSocket} user={serverUser} url={captureUrl} />
       )} />
