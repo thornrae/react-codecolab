@@ -1,6 +1,6 @@
 // import { React, useState } from 'react';
-import React  from 'react';
-import {useState, useEffect } from 'react'
+import React from 'react';
+import { useState, useEffect } from 'react'
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -29,14 +29,15 @@ export default function FormDialog(props) {
   };
 
   useEffect(() => {
-    if(!signUp) {
+
+    if (!signUp) {
       setOpen(true)
     }
-  },[])
+  })
 
   const handleChange = (e) => {
 
-   data = e.target.value
+    data = e.target.value
   }
   function renderSignup() {
     if (!signUp || signUp === '') {

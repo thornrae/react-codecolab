@@ -15,7 +15,7 @@ import axios from 'axios'
 
 const CreateNew = (props) => {
 
-  
+
 
   const [questions, setQuestions] = useState([])
   const [selectedQuestion, setSelectedQuestion] = useState()
@@ -25,9 +25,21 @@ const CreateNew = (props) => {
   const history = useHistory()
 
   const link = () => {
-    console.log('ROOM URL', room)
-    url(room);
-    history.push(`/colab/${room}`)
+    if (room) {
+      let questionRoom = {
+        question: selectedQuestion,
+        room: room
+      }
+      console.log("EMITTING", questionRoom)
+      socket.emit("question", questionRoom)
+
+
+      console.log('ROOM URL', room)
+      url(room);
+      history.push(`/colab/${room}`)
+    }
+
+
   }
 
   const socket = props.data
@@ -57,36 +69,28 @@ const CreateNew = (props) => {
         }
       })
 
-      
+
     }
 
   }
 
 
   useEffect(() => {
-    
+
     if (selectedQuestion) {
       console.log('SELECTED QUESTION', selectedQuestion)
       console.log('QUESTION', selectedQuestion._id)
       console.log('USER', props.user.user_id)
-      setRoom(`${selectedQuestion._id}${props.user.user_id}`) 
+      setRoom(`${selectedQuestion._id}${props.user.user_id}`)
 
     }
-    
+
   }, [selectedQuestion])
 
 
   useEffect(() => {
-    
-    if (room) {
-      let questionRoom = {
-        question: selectedQuestion,
-        room: room
-      }
-      console.log("EMITTING", questionRoom)
-      socket.emit("question", questionRoom)
-    }
-    
+
+
   }, [room])
 
   return (
