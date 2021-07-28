@@ -24,6 +24,16 @@ const Chat = (props) => {
   //only if these two things change then useEffect will re-render
 
   useEffect(() => {
+    
+    socket.on('message', (message) => {
+      console.log('MESSAGE', message)
+      setMessages([...messages, message])
+    });
+
+  }, [])
+
+  useEffect(() => {
+
     socket.on('message', (message) => {
       setMessages([...messages, message])
     });

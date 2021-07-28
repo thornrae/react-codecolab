@@ -10,6 +10,7 @@ const Message = ( {message: {user, text}, name}) => {
 
   //pass our user into this
   if(user === trimmedName) {
+    console.log(user)
     isSentByCurrentUser = true;
   }
 
