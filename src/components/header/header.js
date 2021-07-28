@@ -6,7 +6,7 @@ import "./Header.css";
 // import SignIn from '../signin/signin.js';
 // import SignUp from '../signup/signup.js';
 
-const Header = () => {
+const Header = (props) => {
 
   let socket = props.socket
 
@@ -14,7 +14,7 @@ const Header = () => {
 
   const link = () => {
     console.log('LINK WORKING')
-    socket.emit('leave-room', `${user} Leaving Room`)
+    socket.emit('leave-room', `${user.user_name} Leaving Room`)
     }
 
   return (
