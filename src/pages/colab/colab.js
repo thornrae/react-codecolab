@@ -44,6 +44,7 @@ const Colab = (props) => {
       <Chat socket={socket} />
       <Whiteboard board={board}/>
       </div>
+      
     </>
   )
 
