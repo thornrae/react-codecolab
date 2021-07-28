@@ -8,8 +8,15 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import "./Lobby.css";
+import { NavLink } from "react-router-dom";
 
 const Lobby = (props) => {
+
+  const banner = {
+    title: "Welcome",
+    text: ""
+  }
+  
   const history = useHistory()
 
   const socket = props.data
@@ -39,8 +46,6 @@ const Lobby = (props) => {
 
 
   return (
-    <>
-      <>
         <div className="container main-banner-container my-4">
           <div className="main-banner-content">
             <div className="main-banner-text">
@@ -65,7 +70,7 @@ const Lobby = (props) => {
           /> */}
           </div>
         </div>
-      </>
+
       )
 
 
