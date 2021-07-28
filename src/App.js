@@ -1,4 +1,5 @@
-import { React, useEffect,useState } from 'react';
+import React from 'react';
+import { useEffect, useState } from 'react'
 import { Route } from 'react-router-dom';
 import './App.css';
 import Colab from './pages/colab/colab.js';
@@ -8,38 +9,43 @@ import Header from './components/header/header.js';
 import Footer from './components/footer/footer.js';
 import AboutUs from './pages/aboutus/aboutus.js';
 
-import Signup from './components/signup/signup.js'
+import Signup from './components/signup/signup.js';
 
-import socket from 'socket.io-client'
+import socket from 'socket.io-client';
 
 
 
 
 function App() {
 
-  const [colabSocket, setColabSocket] = useState()
-  const [user, setUser] = useState('')
-  const [openRooms, setOpenRooms] = useState([])
+  const [colabSocket, setColabSocket] = useState();
+  const [user, setUser] = useState('');
+  const [serverUser, setServerUser] = useState();
+  const [openRooms, setOpenRooms] = useState([]);
+  const [roomUrl, setRoomUrl] = useState('');
 
+  const captureUrl = (url) => {
+    console.log('URL FROM LOBBY', url)
+    setRoomUrl(url);
+  }
   const userData = (username) => {
-    setUser(username)
+    setUser(username);
   }
 
 
-
-
   useEffect(() => {
-    const s = socket.connect("https://codecolab-api.herokuapp.com/")
+    const s = socket.connect("https://codecolab-api.herokuapp.com/");
+    // const s = socket.connect("http://localhost:3333")
 
-    setColabSocket(s)
+    setColabSocket(s);
 
 
     return () => {
 
-      s.disconnect()
+      s.disconnect();
 
     }
-  }, [])
+  }, []);
 
 
   useEffect(() => {
@@ -47,37 +53,54 @@ function App() {
 
       colabSocket.on('room-data', payload => {
         setOpenRooms(payload)
-        console.log(payload)
+        console.log('OPEN ROOMS', payload)
       })
     }
-  }, [colabSocket])
+  }, [colabSocket]);
+
+
+  useEffect(() => {
+    if (user) {
+      colabSocket.emit('user-signup', user)
+    }
+  }, [user]);
 
 
   useEffect(() => {
     if (user) {
 
-      colabSocket.emit('user-signup', user)
+      colabSocket.on('user-return', payload => {
+        setServerUser(payload)
+
+        console.log('NEW USER', payload);
+
+      })
+
+
     }
-  }, [user])
+  }, [colabSocket, user]);
+
 
   return (
+
     <div>
       <Header />
       <Signup userSubmit={userData} />
       <Route path="/" exact render={props =>
-      (<Lobby {...props} rooms={openRooms} data={colabSocket} />
+      (<Lobby {...props} rooms={openRooms} data={colabSocket} url={captureUrl} />
       )} />
-      { openRooms.map((room) => <Route path={`/colab/${room.room_id}`} exact render={props =>
-        (<Colab {...props} data={colabSocket} />
-        )} />)
+      {openRooms.map((room) => <Route path={`/colab/${room.room_id}`} exact render={props =>
+      (<Colab {...props} data={colabSocket} question={openRooms} url={roomUrl} />
+      )} />)
       }
 
       <Route path="/create" exact render={props =>
-      (<CreateNew {...props} data={colabSocket} user={user} />
+      (<CreateNew {...props} data={colabSocket} user={serverUser} url={captureUrl} />
       )} />
       <Route path="/aboutus" exact component={AboutUs} />
       <Footer />
     </div>
+
   )
 }
 

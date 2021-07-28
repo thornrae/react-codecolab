@@ -1,8 +1,10 @@
-import { React, useEffect, useState } from 'react';
+import React from 'react';
+import { useEffect, useState } from 'react';
 // import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 
@@ -13,12 +15,20 @@ import axios from 'axios'
 
 const CreateNew = (props) => {
 
+
+
   const [questions, setQuestions] = useState([])
-
   const [selectedQuestion, setSelectedQuestion] = useState()
+  const [room, setRoom] = useState()
 
+  let url = props.url;
   const history = useHistory()
 
+  const link = () => {
+    console.log('ROOM URL', room)
+    url(room);
+    history.push(`/colab/${room}`)
+  }
 
   const socket = props.data
 
@@ -40,30 +50,27 @@ const CreateNew = (props) => {
 
 
     if (questions) {
+
       questions.forEach((question) => {
         if (question.name === textContent) {
           setSelectedQuestion(question)
         }
       })
-    }
 
-    
-    
+
+    }
 
   }
 
+
   useEffect(() => {
+
     if (selectedQuestion) {
-      console.log(selectedQuestion)
+      console.log('SELECTED QUESTION', selectedQuestion)
+      console.log('QUESTION', selectedQuestion._id)
+      console.log('USER', props.user.user_id)
+      setRoom(`${selectedQuestion._id}${props.user.user_id}`)
 
-      let roomInfo = {
-        question: selectedQuestion,
-        id: selectedQuestion._id
-      }
-
-      let room = `${selectedQuestion._id}${props.user.user_id}`
-      socket.emit("question", roomInfo)
-      history.push(`/colab/${room}`)
     }
 
   }, [selectedQuestion])
@@ -71,15 +78,16 @@ const CreateNew = (props) => {
 
   useEffect(() => {
 
-
-      console.log('SOCKET', socket)
-    if (socket) {
-
-
+    if (room) {
+      let questionRoom = {
+        question: selectedQuestion,
+        room: room
+      }
+      console.log("EMITTING", questionRoom)
+      socket.emit("question", questionRoom)
     }
-  }, [socket])
 
-
+  }, [room])
 
   return (
     <>
@@ -90,23 +98,27 @@ const CreateNew = (props) => {
             <ListItemText primary={question.name} />
           </ListItem>)}
       </List>
-
-
-      {/*                                         <h3>Create New Room Here</h3>
-  <ul> 
-        <p>We Need To:</p>
-          <li>
-        Make axios call to database to render list of questions, that sets state in this component using the useState hook
-          </li>
-        <li>
-          Attach an onClick function to the rendered questions, so that, when selected will pass that question information as props to the colab lab and be used to render the question in the page
-      </li>
-  </ul> */}
+      <Button onClick={link}>Create Colab</Button> */ }
     </>
   )
+
 
 
 
 }
 
 export default CreateNew;
+
+
+FIXME: // list component needs to become a card component 
+{/* <Card className="text-center">
+      <Card.Header >Featured</Card.Header>
+      <Card.Body>
+      <Card.Title>Special title treatment</Card.Title>
+       <Card.Text>
+       {question.name}
+       </Card.Text>
+    <Button variant="primary">Go somewhere</Button>
+  </Card.Body>
+  <Card.Footer className="text-muted">2 days ago</Card.Footer>)}
+      </Card>
