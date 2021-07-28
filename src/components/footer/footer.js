@@ -9,7 +9,7 @@ const FooterLinks = () => {
         <h5>About</h5>
         <ul className="list-unstyled text-small">
           <li>
-            <NavLink to="/">Company</NavLink>
+            <NavLink to="/aboutus">About-Us</NavLink>
           </li>
           <li>
             <NavLink to="/">Location</NavLink>
@@ -26,7 +26,7 @@ const FooterLinks = () => {
             <NavLink to="/">Help</NavLink>
           </li>
           <li>
-            <NavLink to="/">Privacy Ploicy</NavLink>
+            <NavLink to="/">Privacy Policy</NavLink>
           </li>
           <li>
             <NavLink to="/">Terms and Conditions</NavLink>
