@@ -100,17 +100,30 @@ const CreateNew = (props) => {
 
   const useStyles = makeStyles({
     root: {
-      width: 400,
-      height: 400,
+      maxWidth: 400,
+      maxHeight: 400,
       display: "flex",
-      flexDirection: "rows"
+      alignContent: "center",
+      
+      
+
+    },
+    item: {
+      boxShadow: "10px 5px 5px gray",
+      marginBottom: "20px",
+      // alignContent: "center",
+      // justifyContent:"center",
+      marginLeft: "460px"
+
+
     },
  
     question: {
-      marginRight: "30px"
+      height: "100px"
     },
+
     description: {
-      font: "10px"
+      font: "10px",
     }
 
   });
@@ -125,7 +138,7 @@ const CreateNew = (props) => {
     <>
     <div className={classes.root}>
     <List component="nav">
-      <div className={classes.card}>
+      <div >
         {questions.map((question) =>
           <ListItem className={classes.item}button onClick={ () => onClick(question.name)} value={question} key={question._id}>
             <ListItemText className={classes.question} primary={question.name} />

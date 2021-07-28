@@ -63,11 +63,6 @@ const Lobby = (props) => {
                 </NavLink>
               </p>
             </div>
-            {/* <img
-            className="main-banner-image"
-            src={img}
-            alt="Logo"
-          /> */}
           </div>
         </div>
 
@@ -77,4 +72,4 @@ const Lobby = (props) => {
 
 }
 
-      export default Lobby;
+export default Lobby;
