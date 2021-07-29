@@ -23,19 +23,17 @@ const Chat = (props) => {
   const [message, setMessage] = useState('');
   //only if these two things change then useEffect will re-render
 
+useEffect(() => {
+  let data = props.user
+  console.log('PROPS USER', props.user)
+  setName(data.user_name)
+  console.log('MESSAGE NAME', name)
+}, [])
   useEffect(() => {
-    
-    socket.on('message', (message) => {
-      console.log('MESSAGE', message)
-      setMessages([...messages, message])
-    });
-
-  }, [])
-
-  useEffect(() => {
-
+    console.log("HERE")
     socket.on('message', (message) => {
       setMessages([...messages, message])
+      socket.emit('message-log', messages)
     });
 
   }, [messages])
@@ -48,7 +46,7 @@ const Chat = (props) => {
     }
   }
 
-  console.log(message, messages);
+  console.log('MESSAGE MESSAGES',message, messages);
 
   return (
     <div className="outerContainer">

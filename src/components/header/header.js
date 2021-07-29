@@ -14,7 +14,7 @@ const Header = (props) => {
 
   const link = () => {
     console.log('LINK WORKING')
-    socket.emit('leave-room', `${user} Leaving Room`)
+    socket.emit('leave-room', `${user.user_name} Leaving Room`)
     }
 
   return (

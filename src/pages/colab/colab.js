@@ -93,7 +93,7 @@ const Colab = (props) => {
       </Popover>
   </div>
       <div className="share-features">
-        <Chat socket={socket} />
+        <Chat socket={socket} user={props.user} />
         <Whiteboard board={board} />
         <Resources resources={questionResources}/>
       </div>
