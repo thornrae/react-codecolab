@@ -22,9 +22,9 @@ const Header = (props) => {
       <div>
         <h5><NavLink to="/" onClick={link}> Home</NavLink></h5>
       </div>
-      {/* <div>
-        <h5><NavLink to="/Rooms">Rooms</NavLink></h5>
-      </div> */}
+      <div>
+        <h5><NavLink to="/aboutus">About Us</NavLink></h5>
+      </div>
       {/* <div>
         <h5><NavLink to="/signup">Sign-Up</NavLink></h5>
       </div>

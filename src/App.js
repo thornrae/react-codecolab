@@ -6,7 +6,7 @@ import Colab from './pages/colab/colab.js';
 import Lobby from './pages/lobby/lobby.js';
 import CreateNew from './pages/createnew/createnew.js';
 import Header from './components/header/header.js';
-import Footer from './components/footer/footer.js';
+// import Footer from './components/footer/footer.js';
 import AboutUs from './pages/aboutus/aboutus.js';
 
 import Signup from './components/signup/signup.js'
@@ -34,7 +34,8 @@ function App() {
 
 
   useEffect(() => {
-    const s = socket.connect("http://localhost:3333/")
+    // const s = socket.connect("http://localhost:3333/");
+    const s = socket.connect("https://codecolab-api.herokuapp.com/")
 
     setColabSocket(s)
 
@@ -92,12 +93,11 @@ function App() {
         (<Colab {...props} data={colabSocket} question={openRooms} url={roomUrl}/>
         )} />)
       }
-
       <Route path="/create" exact render={props =>
       (<CreateNew {...props} data={colabSocket} user={serverUser} url={captureUrl} />
       )} />
       <Route path="/aboutus" exact component={AboutUs} />
-      <Footer />
+      {/* <Footer /> */}
     </div>
 
   )

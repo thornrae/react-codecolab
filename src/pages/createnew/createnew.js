@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-// import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -8,14 +8,18 @@ import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 
+// import { makeStyles } from '@material-ui/core/styles';
+// import Card from '@material-ui/core/Card';
+// import CardActions from '@material-ui/core/CardActions';
+// import CardContent from '@material-ui/core/CardContent';
+// import Button from '@material-ui/core/Button';
+// import Typography from '@material-ui/core/Typography';
 
 
 
 
 
 const CreateNew = (props) => {
-
-
 
   const [questions, setQuestions] = useState([])
   const [selectedQuestion, setSelectedQuestion] = useState()
@@ -39,6 +43,8 @@ const CreateNew = (props) => {
       history.push(`/colab/${room}`)
     }
 
+    
+
 
   }
 
@@ -58,8 +64,10 @@ const CreateNew = (props) => {
 
   const onClick = async (e) => {
 
-    const textContent = e.target.childNodes[0].textContent
+    const textContent = e
+    // const textContent = e.target.childNodes[0].textContent
 
+    console.log('textContent', textContent)
 
     if (questions) {
 
@@ -68,10 +76,7 @@ const CreateNew = (props) => {
           setSelectedQuestion(question)
         }
       })
-
-
     }
-
   }
 
 
@@ -93,21 +98,104 @@ const CreateNew = (props) => {
 
   }, [room])
 
+  const useStyles = makeStyles({
+    root: {
+      maxWidth: 400,
+      maxHeight: 400,
+      display: "flex",
+      alignContent: "center",
+      
+      
+
+    },
+    item: {
+      boxShadow: "10px 5px 5px gray",
+      marginBottom: "20px",
+      // alignContent: "center",
+      // justifyContent:"center",
+      marginLeft: "460px"
+
+
+    },
+ 
+    question: {
+      height: "100px"
+    },
+
+    description: {
+      font: "10px",
+    }
+
+  });
+
+
+  // ------------------------------------- MATERIAL UI ------------------
+  const classes = useStyles();
+
+ 
+
   return (
     <>
-
-      <List component="nav">
+    <div className={classes.root}>
+    <List component="nav">
+      <div >
         {questions.map((question) =>
-          <ListItem button onClick={onClick} value={question} key={question._id}>
-            <ListItemText primary={question.name} />
+          <ListItem className={classes.item}button onClick={ () => onClick(question.name)} value={question} key={question._id}>
+            <ListItemText className={classes.question} primary={question.name} />
+            <ListItemText className={classes.description} secondary={question.description} />
+            <Button onClick={link}>Create Colab</Button>
           </ListItem>)}
+        </div>
       </List>
-      <Button onClick={link}>Create Colab</Button>
-    </>
+  </div> 
+</>
   )
-
-
-
 }
 
 export default CreateNew;
+
+
+
+
+   // const bull = <span className={classes.bullet}>•</span>;
+
+
+
+
+
+
+{/* <div className="card">
+{questions.map((question) => 
+<div class="container">
+  <h4><b>{question.name}</b></h4>
+  <p>{question.description}</p>
+</div>)}
+</div> */}
+
+
+
+// <Card className={classes.root}>
+// {questions.map((question) => 
+// <CardContent>
+//   <Typography className={classes.title} color="textSecondary" gutterBottom>
+//     {/* Code Challenge: */}
+//   </Typography>
+//   <Typography variant="h5" component="h2">
+//     {/* {question.name} */}
+//   </Typography>
+//   <Typography className={classes.pos} color="textSecondary">
+//     {question.type}
+//   </Typography>
+//   <Typography variant="body2" component="p">
+//     {question.description}
+//     <br />
+//     {'"a benevolent smile"'}
+//   </Typography>
+
+// <CardActions>
+// {/* {questions.map((question) =>  */}
+//   <Button size="small" onClick={onClick} value={question} key={question._id}>CODE COLAB: {question.name}</Button>
+// </CardActions> 
+// </CardContent> )}
+// </Card> 
+ 
