@@ -90,7 +90,7 @@ function App() {
       (<Lobby {...props} rooms={openRooms} data={colabSocket} url={captureUrl} />
       )} />
       { openRooms.map((room) => <Route path={`/colab/${room.room_id}`} exact render={props =>
-        (<Colab {...props} data={colabSocket} question={openRooms} url={roomUrl}/>
+        (<Colab {...props} data={colabSocket} question={openRooms} url={roomUrl} user={serverUser} />
         )} />)
       }
       <Route path="/create" exact render={props =>

@@ -23,7 +23,12 @@ const Chat = (props) => {
   const [message, setMessage] = useState('');
   //only if these two things change then useEffect will re-render
 
-
+useEffect(() => {
+  let data = props.user
+  console.log('PROPS USER', props.user)
+  setName(data.user_name)
+  console.log('MESSAGE NAME', name)
+}, [])
   useEffect(() => {
     console.log("HERE")
     socket.on('message', (message) => {
