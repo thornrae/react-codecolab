@@ -1,7 +1,8 @@
 import React from 'react';
 import { useEffect, useState } from 'react'
 import Chat from '../../components/chat/chat/chat';
-import Whiteboard from '../../components/whiteboard/whiteboard.js'
+import Whiteboard from '../../components/whiteboard/whiteboard.js';
+import Resources from '../../components/resources/resources.js';
 import { makeStyles } from '@material-ui/core/styles';
 import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
@@ -94,6 +95,7 @@ const Colab = (props) => {
       <div className="share-features">
         <Chat socket={socket} />
         <Whiteboard board={board} />
+        <Resources resources={questionResources}/>
       </div>
 
     </>
