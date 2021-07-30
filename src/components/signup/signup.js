@@ -1,4 +1,7 @@
-import { React, useState, useEffect } from 'react';
+// import { React, useState } from 'react';
+import React from 'react';
+import { useState, useEffect } from 'react'
+
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -6,8 +9,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { render } from 'react-dom';
-import { LiveTvRounded } from '@material-ui/icons';
+// import { render } from 'react-dom';
+// import { LiveTvRounded } from '@material-ui/icons';
 
 export default function FormDialog(props) {
 
@@ -15,19 +18,26 @@ export default function FormDialog(props) {
   const [signUp, setSignUp] = useState('')
   let data
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
 
-  const handleClose = () => {
+  const handleSubmit = () => {
     setOpen(false);
     setSignUp(data)
     props.userSubmit(data)
   };
 
+  useEffect(() => {
+
+    if (!signUp) {
+      setOpen(true)
+    }
+  })
 
   const handleChange = (e) => {
-   data = e.target.value
+
+    data = e.target.value
   }
   function renderSignup() {
     if (!signUp || signUp === '') {
@@ -36,7 +46,7 @@ export default function FormDialog(props) {
         Open form dialog
       </Button> */}
 
-        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+        <Dialog open={open} onClose={handleSubmit} aria-labelledby="form-dialog-title">
           <DialogTitle id="form-dialog-title">Create a User Name</DialogTitle>
           <DialogContent>
             <DialogContentText>
@@ -52,10 +62,7 @@ export default function FormDialog(props) {
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose} color="primary">
-              Cancel
-            </Button>
-            <Button onClick={handleClose} color="primary">
+            <Button onClick={handleSubmit} color="primary">
               Submit
             </Button>
           </DialogActions>

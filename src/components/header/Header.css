@@ -1,0 +1,31 @@
+.header-contaner {
+  color: #ffffff;
+  background: #111111;
+  padding: 40px 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+
+.main-banner-image {
+  height: 80px;
+  width: 80px;
+
+  justify-self: end;
+}
+.header-contaner a {
+  color: #6c757d;
+  text-decoration: none;
+}
+.header-contaner a:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 576px) {
+  /* footer section */
+  .header-contaner {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    justify-items: left;
+  }
+}
