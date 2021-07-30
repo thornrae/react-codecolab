@@ -11,7 +11,7 @@ const Whiteboard = (props) => {
   console.log('source', source)
   return (
 
-  <iframe key={key} title="board" src={source} width="900" height="600" scrolling="no" frameborder="0"></iframe>
+  <iframe key={key} title="board" src={source} width="100%" height="600" scrolling="no" frameborder="0"></iframe>
 
   )
 
