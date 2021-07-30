@@ -9,7 +9,7 @@
 h1 {
   display: flex;
   justify-content: center;
-  color: #39ff14;
+  color:rgb(8, 115, 187);
   font-family: 'Major Mono Display', monospace;
   font-size: 50px;
 }
@@ -17,7 +17,7 @@ h1 {
 p {
   display: flex;
   justify-content: center;
-  color: #39ff14;
+  /* color: #39ff14; */
   font-size: 25px;
 } 
 
