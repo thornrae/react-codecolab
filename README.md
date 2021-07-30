@@ -9,7 +9,7 @@
 - [Kale Lesko](https://github.com/saynka)
 - [Terrence Jamal Simms](https://github.com/tjsomega)
 
-### Links and Resources
+### Links and Resources 
 
 - [ci/cd](http://xyz.com) (GitHub Actions)
 - [back-end server url](http://xyz.com) (when applicable)
